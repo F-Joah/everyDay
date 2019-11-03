@@ -1,0 +1,44 @@
+从今天开始，每天总得学点儿啥啊。。。
+我就努力让gitHub绿365天！
+
+--------------------------------------------这是一条分割线--------------------------------------------
+
+Spring Bean 的初始化流程如下：
+   实例化Bean对象
+   Aware相关的属性，注入到Bean对象
+   调用相应的方法，进一步初始化Bean对象
+Spring Bean 的销毁流程:
+   如果Bean实现了DisposableBean接口，当Spring容器关闭时，会调用 destroy() 方法.
+   如果Bean指定了 destroy() 方法，那么将调用该方法.
+
+过程可以理解为:
+
+容器启动--->实例化Bean对象--->设置对象属性--->调用BeanNameAware的setBeanName()方法--->调用ApplicationContextAware的setApplicationContext()方法---
+                                                                                                                                          |
+                                                                                                                                         \|/
+  -----------------------------------------------------------------------------------------------------------------------------------------
+  |
+ \|/
+  ---->调用BeanPostProcessor的预初始化方法（before）--->调用InitializingBean的
+                                                     afterPropertiesSet()方法--->调用init-method  ---> 调用BeanPostProcessor
+                                                                                                         的后初始化方法（after）-----
+                                                                                                                                  |
+                                                                                                                                 \|/
+  ---------------------------------------------------------------------------------------------------------------------------------
+  |
+  |
+  |     ---->scope为singleton的缓存在Spring IoC容器中------
+ \|/    |                                               |
+  ----> |                                               |---->容器关闭---->调用disposableBean的afterPropertiesSet()方法---->调用destroy-method()的方法
+        |                                               |
+        ---->scope为prototype的生命周期交给客户端-----------
+
+
+
+
+
+
+
+
+
+
