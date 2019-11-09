@@ -17,7 +17,7 @@ public class LogAopAdviseDefine {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Pointcut("within(NeedLogService)")
+    @Pointcut("within(com.joah.everyday.N20191105.service.NeedLogService)")
     public void pointCut(){
 
     }
