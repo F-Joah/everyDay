@@ -1,6 +1,6 @@
-package com.joah.everyday.N20191109;
+package com.joah.everyday.N20191109.timeAop;
 
-import com.joah.everyday.N20191109.Service.SomeService;
+import com.joah.everyday.N20191109.timeAop.Service.SomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

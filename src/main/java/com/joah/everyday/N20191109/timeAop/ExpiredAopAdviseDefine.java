@@ -1,4 +1,4 @@
-package com.joah.everyday.N20191109;
+package com.joah.everyday.N20191109.timeAop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -15,7 +15,7 @@ public class ExpiredAopAdviseDefine {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Pointcut("within(com.joah.everyday.N20191109.Service.SomeService)")
+    @Pointcut("within(com.joah.everyday.N20191109.timeAop.Service.SomeService)")
     public void pointCat(){
     }
 
