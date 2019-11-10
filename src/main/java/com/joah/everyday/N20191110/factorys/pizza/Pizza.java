@@ -29,25 +29,25 @@ public abstract class Pizza {
 
 
     public void prepare(){
-        System.out.println("Preparing " + name);
-        System.out.println("Tossing dough ");
-        System.out.println("Adding sause ");
-        System.out.println("Adding toppings ");
+        System.out.println("准备: " + name);
+        System.out.println("掷面团 ");
+        System.out.println("加酱汁 ");
+        System.out.println("添加浇头 ");
         for (int i = 0;i < toppings.size();i++){
             System.out.println("   " + toppings.get(i));
         }
     }
 
     public void bake(){
-        System.out.println("Bake for 25 min at 350");
+        System.out.println("在350℃下烘烤25分钟");
     }
 
     public void cut(){
-        System.out.println("Cutting the pizza into diagonal slices");
+        System.out.println("把披萨切成对角片");
     }
 
     public void box(){
-        System.out.println("Place pizza in official PizzaStore box");
+        System.out.println("把披萨放在官方的披萨店盒子里");
     }
 
     public String getName(){

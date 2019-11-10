@@ -5,20 +5,15 @@ import com.joah.everyday.N20191110.factorys.pizza.Pizza;
 import org.springframework.stereotype.Service;
 
 /**
- * pizza 商店 ，一个筐
+ * pizza 商店 抽象类
  */
 @Service
-public class PizzaStore {
-
-    SimplePizzaFactory factory;
-
-    public PizzaStore (SimplePizzaFactory factory){
-        this.factory = factory;
-    }
+public abstract class PizzaStore {
 
     public Pizza orderPizza(String type){
-        Pizza pizza ;
-        pizza = factory.createPizza(type);
+        Pizza pizza;
+        pizza = createPizza(type);
+
         pizza.prepare();
         pizza.bake();
         pizza.cut();
@@ -26,4 +21,11 @@ public class PizzaStore {
 
         return pizza;
     }
+
+    /**
+     * 创建pizza的方法交给子类去实现
+     * @param item
+     * @return
+     */
+    public abstract Pizza createPizza(String item);
 }

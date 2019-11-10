@@ -1,6 +1,8 @@
-package com.joah.everyday.N20191110.factorys.pizza;
+package com.joah.everyday.N20191110.factorys.pizza.NYStyle;
 
-public class VeggiePizza extends Pizza {
+import com.joah.everyday.N20191110.factorys.pizza.Pizza;
+
+public class NYStyleClamPizza extends Pizza {
 
     @Override
     public void prepare() {
