@@ -1,5 +1,7 @@
 package com.joah.everyday.N20191115.adapter;
 
+import org.omg.Messaging.SYNC_WITH_TRANSPORT;
+
 public class DogAdapter implements Robot {
 
     Dog dog;
@@ -22,6 +24,6 @@ public class DogAdapter implements Robot {
 
     @Override
     public void move() {
-
+        System.out.println("机器人模拟狗跑... ");
     }
 }
