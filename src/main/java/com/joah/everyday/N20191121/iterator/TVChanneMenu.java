@@ -33,10 +33,9 @@ public class TVChanneMenu implements TelevisionMenu{
 
     @Override
     public Iterator createIterator() {
-        return null;
-    }
 
-    public List<MenuItem> getMenuItems() {
-        return menuItems;
+        Iterator iterator = new TVChanneMenuIterator(menuItems);
+
+        return iterator;
     }
 }

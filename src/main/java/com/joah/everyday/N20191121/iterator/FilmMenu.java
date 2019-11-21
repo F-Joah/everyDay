@@ -40,12 +40,11 @@ public class FilmMenu implements TelevisionMenu {
         }
     }
 
-    public MenuItem[] getMenuItems(){
-        return menuItems;
-    }
-
     @Override
     public Iterator createIterator() {
-        return null;
+
+        Iterator iterator = new FilmMenuIterator(menuItems);
+
+        return iterator;
     }
 }
