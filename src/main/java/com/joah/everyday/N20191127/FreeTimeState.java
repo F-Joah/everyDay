@@ -1,5 +1,8 @@
 package com.joah.everyday.N20191127;
 
+/**
+ * 空闲状态：只能预定和入住
+ */
 public class FreeTimeState implements State {
 
     Room hotelManagement;

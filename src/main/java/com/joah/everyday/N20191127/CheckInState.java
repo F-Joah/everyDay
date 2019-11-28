@@ -1,5 +1,8 @@
 package com.joah.everyday.N20191127;
 
+/**
+ * 入住可以退房
+ */
 public class CheckInState implements State {
 
     Room hotelManagement;
