@@ -1,4 +1,4 @@
-package com.joah.everyday.N202001.N20200111;
+package com.joah.everyday.N202001.N20200111.redis;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.*;

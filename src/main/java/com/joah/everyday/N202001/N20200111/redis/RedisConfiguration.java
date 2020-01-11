@@ -1,4 +1,4 @@
-package com.joah.everyday.N202001.N20200111;
+package com.joah.everyday.N202001.N20200111.redis;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
