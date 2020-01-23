@@ -1,0 +1,13 @@
+package com.joah.everyday.N2019.N201912.N20191225;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class SpringBootRedisApplication {
+
+    public static void main(String[] args){
+        SpringApplication.run(SpringBootRedisApplication.class, args);
+    }
+
+}

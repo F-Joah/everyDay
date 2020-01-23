@@ -1,0 +1,9 @@
+package com.joah.everyday.N2019.N201912.N20191229.util;
+
+public class StateParameter {
+	public final static String SUCCESS="1";
+	public final  static String  FAULT="0";
+	public final static String DATA="data";
+	public final static String STATE="state";
+	
+}
