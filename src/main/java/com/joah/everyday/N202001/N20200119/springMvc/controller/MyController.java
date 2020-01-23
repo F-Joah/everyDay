@@ -22,7 +22,7 @@ public class MyController {
     @CustomQualifier("MyServiceImpl")
     private MyService myService;
 
-    @CustomRequestMapping("query")
+    @CustomRequestMapping("query1")
     public void query(HttpServletRequest request, HttpServletResponse response,
                       @CustomRequestParam("name")String name, @CustomRequestParam("age")String age){
 
