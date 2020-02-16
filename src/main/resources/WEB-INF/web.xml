@@ -3,7 +3,7 @@
     <display-name>maven_handmvc</display-name>
     <servlet>
         <servlet-name>DispatcherServlet</servlet-name>
-        <servlet-class>com.joah.everyday.N202001.N20200119.springMvc.servlet.DispatcherServlet</servlet-class>
+        <servlet-class>com.joah.everyday.N2020.N202001.N20200119.springMvc.servlet.DispatcherServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
