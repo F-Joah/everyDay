@@ -1,8 +1,6 @@
 package com.joah.everyday.N2020.N202002.N20200218.ThreadPool;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 /**
  *
@@ -46,6 +44,15 @@ import java.util.concurrent.TimeUnit;
  *  4、线程池地城工作原理？
  *
  *
+ *  线程池最大线程数的配置？
+ *      1、CPU 密集型
+ *          CPU 密集型 一般是： CPU核数 + 1 个
+ *
+ *      2、IO 密集型
+ *          1、由于 IO 密集型任务线程并不是一直在执行任务，则应配置尽可能多的线程，如  CPU核数 * 2
+ *          2、CPU核数 / （1 - 阻塞系数）   阻塞系数在 0.8~0.9之间
+ *
+ *
  * @author Joah
  * @time 2020/2/18 18:01
  *
@@ -59,6 +66,79 @@ public class ThreadPoolDemo {
 
     public static void main(String[] args) {
 
+        /**
+         * 线程池的 4 种拒绝策略
+         */
+
+        /**
+         * 1、AbortPolicy(默认)：
+         *      直接抛出 RejectedExecutionException 异常阻断系统正常运行
+         */
+        ExecutorService threadPoolAbortPolicy = new ThreadPoolExecutor(
+                                                    2,
+                                                    5,
+                                                    1L,
+                                                    TimeUnit.SECONDS,
+                                                    new LinkedBlockingQueue<Runnable>(3),
+                                                    Executors.defaultThreadFactory(),
+                                                    new ThreadPoolExecutor.AbortPolicy());
+        /**
+         *
+         * 2、CallerRunsPolicy:
+         *      调用者运行 一种调节机制，该策略既不会抛弃任务，也不会抛出异常，而是将某些任务回退到调用者，从而降低新任务的流量
+         *
+         */
+        ExecutorService threadPoolCallerRunsPolicy = new ThreadPoolExecutor(
+                                                    2,
+                                                    5,
+                                                    1L,
+                                                    TimeUnit.SECONDS,
+                                                    new LinkedBlockingQueue<Runnable>(3),
+                                                    Executors.defaultThreadFactory(),
+                                                    new ThreadPoolExecutor.CallerRunsPolicy());
+        /**
+         * 3、DiscardOldestPolicy:
+         *      抛弃队列中等待最久的任务，然后把当前任务加入队列中尝试再次提交当前任务
+         *
+         */
+        ExecutorService threadPoolDiscardOldestPolicy = new ThreadPoolExecutor(
+                                                    2,
+                                                    5,
+                                                    1L,
+                                                    TimeUnit.SECONDS,
+                                                    new LinkedBlockingQueue<Runnable>(3),
+                                                    Executors.defaultThreadFactory(),
+                                                    new ThreadPoolExecutor.DiscardOldestPolicy());
+
+        /**
+         *
+         * 4、DiscardPolicy：
+         *      直接丢弃任务，不予任何处理也不抛出异常。如果允许任务丢失，这是最好的一种方案
+         *
+         */
+        ExecutorService threadPool = new ThreadPoolExecutor(
+                                                    2,
+                                                    5,
+                                                    1L,
+                                                    TimeUnit.SECONDS,
+                                                    new LinkedBlockingQueue<Runnable>(3),
+                                                    Executors.defaultThreadFactory(),
+                                                    new ThreadPoolExecutor.DiscardPolicy());
+        try {
+            for (int i = 0; i < 10; i++) {
+                threadPool.execute(() ->{
+                    System.out.println(Thread.currentThread().getName() + "\t 办理业务");
+                });
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            threadPool.shutdown();
+        }
+
+    }
+
+    public static void threadPoolInit(){
         /**
          * 一池 5 线程
          *
