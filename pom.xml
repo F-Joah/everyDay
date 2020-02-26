@@ -49,7 +49,11 @@
             <artifactId>lombok</artifactId>
             <version>1.18.8</version>
         </dependency>
-
+        <!--mysql connector-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
         <!-- 整合Redis缓存支持 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
