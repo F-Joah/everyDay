@@ -5,6 +5,9 @@
     <packaging>pom</packaging>
     <modules>
         <module>mianshi</module>
+        <module>N201911</module>
+        <module>N201912</module>
+        <module>N202002</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
