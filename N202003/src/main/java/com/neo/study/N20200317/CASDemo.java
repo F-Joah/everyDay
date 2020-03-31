@@ -1,4 +1,4 @@
-package com.neo.mianshi.N20200317;
+package com.neo.study.N20200317;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

@@ -1,4 +1,4 @@
-package com.neo.mianshi.N202003.JUCJVM;
+package com.neo.study.N202003.JUCJVM;
 
 import java.util.*;
 import java.util.concurrent.*;

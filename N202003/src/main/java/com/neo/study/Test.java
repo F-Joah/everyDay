@@ -1,4 +1,4 @@
-package com.neo.mianshi;
+package com.neo.study;
 
 /**
  * @author Joah

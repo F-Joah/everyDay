@@ -1,4 +1,4 @@
-package com.neo.mianshi.N202003.N20200312;
+package com.neo.study.N202003.N20200312;
 
 /**
  * @author Joah

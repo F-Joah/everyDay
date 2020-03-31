@@ -1,4 +1,4 @@
-package com.neo.mianshi.N20200318;
+package com.neo.study.N20200318;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
