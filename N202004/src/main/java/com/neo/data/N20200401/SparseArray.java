@@ -1,7 +1,6 @@
 package com.neo.data.N20200401;
 
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * 稀疏数组
@@ -19,12 +18,8 @@ public class SparseArray {
         chessArr1[4][5] = 2;
         // 输出原始二维数组
         System.out.println("------------------原始二维数组------------------");
-        for (int[] row : chessArr1){
-            for (int data : row){
-                System.out.printf("%d\t", data);
-            }
-            System.out.println();
-        }
+        soutSparseArr(chessArr1);
+
         /**
          * 将二维数组 转换成 稀疏数组
          */
@@ -58,40 +53,118 @@ public class SparseArray {
         }
         // 输出稀疏数组
         System.out.println();
-        System.out.println("------------------得到的稀疏数组------------------");
+        System.out.println("------------------得到的稀疏数组,并把保存到文件中------------------");
         for (int[] row : sparseArr){
+            for (int data : row){
+                System.out.printf("%d\t", data);
+                // 把数组元素放到number.list中
+                putInNumber(data);
+            }
+            System.out.println();
+        }
+
+        // 读取文件，获取到稀疏数组
+        String s = readFile();
+        int[][] sparseArrByFile = file2SparseArr(s);
+
+        // 将稀疏数组，恢复成二维数组
+        // 1、先读取第一行，获取到原始二维数组的行列数
+        int[][] twoArr = new int[sparseArrByFile[0][0]][sparseArrByFile[0][1]];
+
+        // 2、循环二维数组，剩下的每一行中的数据
+        for (int i = 1; i < sparseArrByFile.length; i++){
+            int col1 = sparseArrByFile[i][0];
+            int col2 = sparseArrByFile[i][1];
+            int col3 = sparseArrByFile[i][2];
+            twoArr[col1][col2] = col3;
+        }
+        System.out.println();
+        System.out.println("------------------读取文件中的稀疏数组转换成二维数组------------------");
+        soutSparseArr(twoArr);
+    }
+
+    /**
+     * 把文件中查出来的 稀疏数组 String 转换成 数组并输出
+     */
+    public static int[][] file2SparseArr(String str){
+        String[] split = str.split("-");
+        int val = 0;
+        int sparseArr2[][] = new int[split.length / 3][3];
+        System.out.println( "split.length:" + split.length + "   split.length / 3 = " + split.length / 3);
+        for (int i = 0; i < split.length / 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                sparseArr2[i][j] = Integer.valueOf(split[val++]);
+            }
+        }
+        System.out.println("------------------file2SparseArr得到的稀疏数组------------------");
+        soutSparseArr(sparseArr2);
+        return sparseArr2;
+    }
+
+    /**
+     * 输出二维数组
+     * @param sparseArr2
+     */
+    private static void soutSparseArr(int[][] sparseArr2) {
+        for (int[] row : sparseArr2){
             for (int data : row){
                 System.out.printf("%d\t", data);
             }
             System.out.println();
         }
+    }
 
-        /**
-         * TODO 把稀疏数组保存到磁盘上
-         */
-
-        // 将稀疏数组，恢复成二维数组
-        // 1、先读取第一行，获取到原始二维数组的行列数
-        int row = sparseArr[0][0];
-        int col = sparseArr[0][1];
-        int[][] twoArr = new int[row][col];
-
-        // 2、循环二维数组，剩下的每一行中的数据
-        for (int i = 1; i < sparseArr.length; i++){
-            int col1 = sparseArr[i][0];
-            int col2 = sparseArr[i][1];
-            int col3 = sparseArr[i][2];
-            twoArr[col1][col2] = col3;
-        }
-        System.out.println();
-        System.out.println("------------------转换成二维数组------------------");
-        for (int[] rows : twoArr){
-            for (int data : rows){
-                System.out.printf("%d\t", data);
+    /**
+     * 读取文件
+     */
+    public static String readFile(){
+        // 文件名称
+        File f = new File("D:\\sparse.data");
+        String s="";
+        InputStream in=null;
+        try{
+            in=new FileInputStream(f);
+            //在这里设置每次读取多少个字符，不用特别大
+            byte[] b = new byte[10];
+            while(in.read(b)!=-1){
+                s+=new String(b);
             }
-            System.out.println();
+            in.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        System.out.println("content:"+s);
+        return s;
+    }
+
+
+    /**
+     * 把数组元素放到number.list中
+     * @param d
+     */
+    public static void putInNumber(int d) {
+        String str = d + "";
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream("D:\\sparse.data", true);
+            fos.write(str.getBytes());
+            fos.write('-');
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            System.out.println(ex);
+            throw new RuntimeException("写入失败！");
+        } finally {
+            try {
+                if (fos != null){
+                    fos.close();
+                }
+            } catch (IOException ex) {
+                System.out.println(ex);
+                throw new RuntimeException("释放资源失败！");
+            }
         }
     }
+
 }
 
 
