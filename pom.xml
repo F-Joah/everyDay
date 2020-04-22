@@ -8,6 +8,7 @@
         <module>N201911</module>
         <module>N201912</module>
         <module>N202002</module>
+        <module>N202004</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
